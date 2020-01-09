@@ -15,7 +15,7 @@ REMINDER: Rule of thumbs of Rust -> they cannot have both aliasing AND mutabilit
 
 # Mandatory for the next session (December 19)
 
-/!\ Have a UNIX system with Rust installed inside:
+⚠️ Have a UNIX system with Rust installed inside:
 
 For those that run a Windows machine, I highly recommend the installation of a WSL (Windows Subsystem for Linux) <https://docs.microsoft.com/en-us/windows/wsl/install-win10>
 
@@ -54,7 +54,7 @@ Supplementary links to feed your curiosity (bonus, not mandatory):
 
 You have to recode a small pipe-like program, working like this:
 
-```shell
+```
 $ mypipe --in fortune --out cowsay
 ```
 

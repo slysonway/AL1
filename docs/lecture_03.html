@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Lecture 2 - </title>
+        <title>Lecture 3 - </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,7 +74,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="lecture_01.html"><strong aria-hidden="true">1.</strong> Lecture 1</a></li><li><a href="lecture_02.html" class="active"><strong aria-hidden="true">2.</strong> Lecture 2</a></li><li><a href="lecture_03.html"><strong aria-hidden="true">3.</strong> Lecture 3</a></li><li><a href="big_project.html"><strong aria-hidden="true">4.</strong> Big Project</a></li></ol>
+            <ol class="chapter"><li><a href="lecture_01.html"><strong aria-hidden="true">1.</strong> Lecture 1</a></li><li><a href="lecture_02.html"><strong aria-hidden="true">2.</strong> Lecture 2</a></li><li><a href="lecture_03.html" class="active"><strong aria-hidden="true">3.</strong> Lecture 3</a></li><li><a href="big_project.html"><strong aria-hidden="true">4.</strong> Big Project</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -120,72 +120,69 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>Hello everyone!</p>
-<p>You will find a French version of this mail bellow, read it carefully and enjoy a homework bit trickier than the previous time:</p>
-<a class="header" href="lecture_02.html#recap-from-the-previous-session" id="recap-from-the-previous-session"><h1>Recap from the previous session</h1></a>
+                        <p>Hello everybody,</p>
+<p>Again, a too-long email, the french version is behind!</p>
+<a class="header" href="lecture_03.html#-important" id="-important"><h1>⚠️ IMPORTANT</h1></a>
+<p>I intend to assign you grades and I need you to be sure that I have the good matching between your mails, GitHub IDs, and names:
+<a href="https://docs.google.com/spreadsheets/d/1O8OsWIaI7GBfuLfFsIT0vmGJkdTsDXf9S7wYtnWxTW0/edit#gid=1826358230">https://docs.google.com/spreadsheets/d/1O8OsWIaI7GBfuLfFsIT0vmGJkdTsDXf9S7wYtnWxTW0/edit#gid=1826358230</a></p>
+<a class="header" href="lecture_03.html#recap-from-the-last-session" id="recap-from-the-last-session"><h2>Recap from the last session</h2></a>
 <ul>
-<li>QCM is a huge success, the mean of the class is 15,92 / 20 (negative points are on me this time)</li>
-<li>Correction of last homework: <a href="https://gist.github.com/yvan-sraka/94638a5dd95f46cdaecf5ab4d7ed2676">https://gist.github.com/yvan-sraka/94638a5dd95f46cdaecf5ab4d7ed2676</a></li>
-<li>I strongly advise you to try to finish rustlings to be more comfortable with basic language features <a href="https://github.com/rust-lang/rustlings">https://github.com/rust-lang/rustlings</a></li>
-<li>The small Rust code I wrote in class to play with ownership and borrowing: <a href="https://gist.github.com/yvan-sraka/81f3f6ea6e7147b69a334b023d71f0bb">https://gist.github.com/yvan-sraka/81f3f6ea6e7147b69a334b023d71f0bb</a></li>
-</ul>
-<p>REMINDER: Rule of thumbs of Rust -&gt; they cannot have both aliasing AND mutability!</p>
-<a class="header" href="lecture_02.html#mandatory-for-the-next-session-december-19" id="mandatory-for-the-next-session-december-19"><h1>Mandatory for the next session (December 19)</h1></a>
-<p>⚠️ Have a UNIX system with Rust installed inside:</p>
-<p>For those that run a Windows machine, I highly recommend the installation of a WSL (Windows Subsystem for Linux) <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a></p>
-<p>and the nice VSCode extension <a href="https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl">https://code.visualstudio.com/remote-tutorials/wsl/run-in-wsl</a> that allows you to run <code>code</code> command remotely in bash.exe shell!</p>
-<p>(and, of course, to have a working Rust dev environment with RLS setup <a href="https://github.com/rust-lang/rls">https://github.com/rust-lang/rls</a>)</p>
-<a class="header" href="lecture_02.html#go-deeper-into-rust" id="go-deeper-into-rust"><h1>Go deeper into Rust</h1></a>
-<p>We, at this point cover, all of 6 first chapters, and most of 7, 8 and 9 of the Rust Book <a href="https://doc.rust-lang.org/stable/book/">https://doc.rust-lang.org/stable/book/</a></p>
-<p>We will not advance to much in Rust specific feature after this point (I will not make a class about trait e.g.), I let you free of learning more about it or not!</p>
-<p>I give you here three handy tools that will help you with homework and graded project:</p>
+<li>
+<p>Recall previous episode:</p>
 <ul>
-<li><a href="https://github.com/rust-lang/rust-clippy">https://github.com/rust-lang/rust-clippy</a></li>
-<li><a href="https://github.com/rust-lang/rustfmt">https://github.com/rust-lang/rustfmt</a></li>
-<li><a href="https://github.com/mre/cargo-inspect">https://github.com/mre/cargo-inspect</a> (play with it!)</li>
+<li>Rust philosophy &quot;zero-cost abstractions&quot; =&gt; play a bit with <code>cargo inspect</code>, <code>cargo fmt</code>, <code>cargo clippy</code></li>
 </ul>
-<a class="header" href="lecture_02.html#go-deeper-into-memory" id="go-deeper-into-memory"><h1>Go deeper into memory</h1></a>
-<p>Try to create a small C program that creates a memory leak (like a loop that malloc but never free) and open it in Valgrind, translates the program in Rust and redo the test.</p>
-<p>Do you know that the program stack has a fixed space size in memory? What’s happen when you fill it all with function calls? -&gt; a stack overflow!</p>
-<p>You can look at this minimalist malloc implementation from mine, using mmap syscall (read its man) to allocate memory pages: <a href="https://github.com/yvan-sraka/malloc">https://github.com/yvan-sraka/malloc</a></p>
-<p>Supplementary links to feed your curiosity (bonus, not mandatory):</p>
+</li>
+<li>
+<p>Let's talk a bit about POSIX, UNIX, Linux, etc ... and file abstraction</p>
 <ul>
-<li>There no null pointers in Rust! Why? Watch “Null References: The Billion Dollar Mistake” from Tony Hoare <a href="https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/">https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/</a></li>
-<li>Some more readings for the brave: “What Every Programmer Should Know About Memory” by Ulrich Drepper from Red Hat <a href="https://people.freebsd.org/%7Elstewart/articles/cpumemory.pdf">https://people.freebsd.org/~lstewart/articles/cpumemory.pdf</a></li>
+<li>Named pipe example: <code>mkfifo</code> (to send a synchronous message)</li>
+<li>What about serialization? Do you know protocol buffer? =&gt; <a href="https://developers.google.com/protocol-buffers">https://developers.google.com/protocol-buffers</a>
+(SPOILER: shared memory is better) =&gt; <a href="https://capnproto.org">https://capnproto.org</a></li>
 </ul>
-<a class="header" href="lecture_02.html#homework-due-to-next-session" id="homework-due-to-next-session"><h1>Homework due to next session</h1></a>
-<p>You have to recode a small pipe-like program, working like this:</p>
-<pre><code>$ mypipe --in fortune --out cowsay
-</code></pre>
-<pre><code> _______________________________________
-/ Q: What's tiny and yellow and very,   \
-| very, dangerous? A: A canary with the |
-\ super-user password.                  /
- ---------------------------------------
-          \   ^__^
-           \  (oo)\_______
-              (__)\       )\/\
-                  ||----w |
-                  ||     ||
-</code></pre>
-<p>You can use <a href="https://clap.rs">https://clap.rs</a> to parse the command-line arguments, and also follow the guide <a href="https://rust-lang-nursery.github.io/cli-wg/">https://rust-lang-nursery.github.io/cli-wg/</a></p>
-<p>Upload your code by doing a PR here: <a href="https://github.com/rust-esgi/mypipe">https://github.com/rust-esgi/mypipe</a></p>
-<a class="header" href="lecture_02.html#big-project" id="big-project"><h1>Big Project</h1></a>
-<p>I will present during the next class the final project on which you will be evaluated. You’re free to come with your idea of an alternative project if you have already in mind something that you want to code in Rust. I will accept any idea that could be reasonably doable by a group of 3 or 4 students (chosen randomly), that implies features specific to systems or networks programming (think about playing with binary encoding, intense computing with concurrent programming, low-level binding with another library or just any funny syscalls, etc…)!</p>
-<p>Cheers, Yvan</p>
+</li>
+<li>
+<p>A multi-thread parallel cat? <a href="https://gist.github.com/yvan-sraka/6b597ec60e679953f7cda9128724c522">https://gist.github.com/yvan-sraka/6b597ec60e679953f7cda9128724c522</a></p>
+<ul>
+<li>Talk about process scheduling, etc...</li>
+<li>Show <code>htop</code> tree view, play with small tests using Valgrind / GDB</li>
+</ul>
+</li>
+</ul>
+<a class="header" href="lecture_03.html#to-go-further" id="to-go-further"><h2>To go further</h2></a>
+<ul>
+<li>Learn about File Descriptor <a href="https://en.wikipedia.org/wiki/File_descriptor">https://en.wikipedia.org/wiki/File_descriptor</a></li>
+<li>IOStream Is Hopelessly Broken <a href="https://www.moria.us/articles/iostream-is-hopelessly-broken/">https://www.moria.us/articles/iostream-is-hopelessly-broken/</a></li>
+<li>Writing an OS in Rust <a href="https://os.phil-opp.com/">https://os.phil-opp.com/</a></li>
+<li>Why is a Rust executable large? <a href="https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html">https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html</a></li>
+<li>Smart pointers in Rust <a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></li>
+<li>Rust sucks because ... <a href="https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because">https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because</a></li>
+</ul>
+<a class="header" href="lecture_03.html#prepare-the-next-session-keep-talking-about-unix-tools-for-binaries-analysis" id="prepare-the-next-session-keep-talking-about-unix-tools-for-binaries-analysis"><h2>Prepare the next session (keep talking about Unix tools for binaries analysis)</h2></a>
+<ul>
+<li><a href="https://lldb.llvm.org">https://lldb.llvm.org</a></li>
+<li><a href="https://godbolt.org">https://godbolt.org</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a></li>
+<li><a href="https://en.wikipedia.org/wiki/GNU_Binutils">https://en.wikipedia.org/wiki/GNU_Binutils</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Strace">https://en.wikipedia.org/wiki/Strace</a></li>
+</ul>
+<p>We will play with =&gt; FFI: Foreign Function Interface</p>
+<p>I wish all of you enjoyed end-of-year celebrations.</p>
+<p>Best, Yvan</p>
+<p>P.S. <a href="https://xkcd.com/835/">https://xkcd.com/835/</a> &amp; <a href="https://xkcd.com/2248/">https://xkcd.com/2248/</a></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="lecture_01.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="lecture_02.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="lecture_03.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="big_project.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -197,13 +194,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="lecture_01.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="lecture_02.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="lecture_03.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="big_project.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
