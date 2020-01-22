@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Lecture 3 - </title>
+        <title>Lecture 4 - </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,7 +74,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="lecture_01.html"><strong aria-hidden="true">1.</strong> Lecture 1</a></li><li><a href="lecture_02.html"><strong aria-hidden="true">2.</strong> Lecture 2</a></li><li><a href="lecture_03.html" class="active"><strong aria-hidden="true">3.</strong> Lecture 3</a></li><li><a href="lecture_04.html"><strong aria-hidden="true">4.</strong> Lecture 4</a></li><li><a href="big_project.html"><strong aria-hidden="true">5.</strong> Big Project</a></li></ol>
+            <ol class="chapter"><li><a href="lecture_01.html"><strong aria-hidden="true">1.</strong> Lecture 1</a></li><li><a href="lecture_02.html"><strong aria-hidden="true">2.</strong> Lecture 2</a></li><li><a href="lecture_03.html"><strong aria-hidden="true">3.</strong> Lecture 3</a></li><li><a href="lecture_04.html" class="active"><strong aria-hidden="true">4.</strong> Lecture 4</a></li><li><a href="big_project.html"><strong aria-hidden="true">5.</strong> Big Project</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -120,69 +120,44 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>Hello everybody,</p>
-<p>Again, a too-long email, the french version is behind!</p>
-<a class="header" href="lecture_03.html#-important" id="-important"><h1>⚠️ IMPORTANT</h1></a>
-<p>I intend to assign you grades and I need you to be sure that I have the good matching between your mails, GitHub IDs, and names:
-<a href="https://docs.google.com/spreadsheets/d/1O8OsWIaI7GBfuLfFsIT0vmGJkdTsDXf9S7wYtnWxTW0/edit#gid=1826358230">https://docs.google.com/spreadsheets/d/1O8OsWIaI7GBfuLfFsIT0vmGJkdTsDXf9S7wYtnWxTW0/edit#gid=1826358230</a></p>
-<a class="header" href="lecture_03.html#recap-from-the-last-session" id="recap-from-the-last-session"><h2>Recap from the last session</h2></a>
+                        <p>Hello everyone, today for this last course, we will play with something fun:</p>
+<a class="header" href="lecture_04.html#networks-in-rust" id="networks-in-rust"><h1>Networks in Rust</h1></a>
+<a class="header" href="lecture_04.html#lvl-0---hello-world" id="lvl-0---hello-world"><h2>Lvl 0 - Hello World!</h2></a>
+<p>Use tokio: <a href="https://github.com/tokio-rs/tokio">https://github.com/tokio-rs/tokio</a> to create a small Rust program <code>alice</code> that asynchronously wait and print a message sent by a program <code>bob</code> using the standard library.</p>
+<blockquote>
+<p>Learn more about <code>async</code>: <a href="https://areweasyncyet.rs">https://areweasyncyet.rs</a> (you can use futures, mio or async-std)</p>
+</blockquote>
+<a class="header" href="lecture_04.html#lvl-1---http-server" id="lvl-1---http-server"><h2>Lvl 1 - HTTP server</h2></a>
+<p>Create a simple HTTP server using <a href="https://hyper.rs">https://hyper.rs</a>, that display a fancy &quot;It's works!&quot; message in your favorite browser on <a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></p>
+<blockquote>
+<p>There is plenty of alternatives here too: <a href="https://www.arewewebyet.org">https://www.arewewebyet.org</a></p>
+</blockquote>
+<a class="header" href="lecture_04.html#lvl-2---api-request" id="lvl-2---api-request"><h2>Lvl 2 - API Request</h2></a>
+<p>Using <a href="https://docs.rs/reqwest">https://docs.rs/reqwest</a> play with some external API, like Giphy one: https://developers.giphy.com/docs/api/endpoint and create a small command-line program that takes a parameter and save the GIF image on your computer!</p>
+<a class="header" href="lecture_04.html#lvl----bonus" id="lvl----bonus"><h2>Lvl ? - Bonus</h2></a>
+<p>Want to play with some &quot;real&quot; web framework, you can try <a href="https://gotham.rs">https://gotham.rs</a> (or <a href="http://nickel-org.github.io">http://nickel-org.github.io</a>)!</p>
+<a class="header" href="lecture_04.html#lvl----extra-bonus" id="lvl----extra-bonus"><h2>Lvl ?? - Extra bonus</h2></a>
+<p>Do you hear about WASM <a href="https://rustwasm.github.io/docs/wasm-pack/">https://rustwasm.github.io/docs/wasm-pack/</a>?</p>
+<a class="header" href="lecture_04.html#to-go-further--are-we-yet" id="to-go-further--are-we-yet"><h2>To go further .. are we yet?</h2></a>
 <ul>
-<li>
-<p>Recall previous episode:</p>
-<ul>
-<li>Rust philosophy &quot;zero-cost abstractions&quot; =&gt; play a bit with <code>cargo inspect</code>, <code>cargo fmt</code>, <code>cargo clippy</code></li>
+<li><a href="https://arewegameyet.com">https://arewegameyet.com</a></li>
+<li><a href="https://areweguiyet.com">https://areweguiyet.com</a></li>
+<li><a href="http://arewelearningyet.com">http://arewelearningyet.com</a></li>
+<li><a href="https://areweaudioyet.com">https://areweaudioyet.com</a></li>
 </ul>
-</li>
-<li>
-<p>Let's talk a bit about POSIX, UNIX, Linux, etc ... and file abstraction</p>
-<ul>
-<li>Named pipe example: <code>mkfifo</code> (to send a synchronous message)</li>
-<li>What about serialization? Do you know protocol buffer? =&gt; <a href="https://developers.google.com/protocol-buffers">https://developers.google.com/protocol-buffers</a>
-(SPOILER: shared memory is better) =&gt; <a href="https://capnproto.org">https://capnproto.org</a></li>
-</ul>
-</li>
-<li>
-<p>A multi-thread parallel cat? <a href="https://gist.github.com/yvan-sraka/6b597ec60e679953f7cda9128724c522">https://gist.github.com/yvan-sraka/6b597ec60e679953f7cda9128724c522</a></p>
-<ul>
-<li>Talk about process scheduling, etc...</li>
-<li>Show <code>htop</code> tree view, play with small tests using Valgrind / GDB</li>
-</ul>
-</li>
-</ul>
-<a class="header" href="lecture_03.html#to-go-further" id="to-go-further"><h2>To go further</h2></a>
-<ul>
-<li>Learn about File Descriptor <a href="https://en.wikipedia.org/wiki/File_descriptor">https://en.wikipedia.org/wiki/File_descriptor</a></li>
-<li>IOStream Is Hopelessly Broken <a href="https://www.moria.us/articles/iostream-is-hopelessly-broken/">https://www.moria.us/articles/iostream-is-hopelessly-broken/</a></li>
-<li>Writing an OS in Rust <a href="https://os.phil-opp.com/">https://os.phil-opp.com/</a></li>
-<li>Why is a Rust executable large? <a href="https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html">https://lifthrasiir.github.io/rustlog/why-is-a-rust-executable-large.html</a></li>
-<li>Smart pointers in Rust <a href="https://doc.rust-lang.org/book/ch15-00-smart-pointers.html">https://doc.rust-lang.org/book/ch15-00-smart-pointers.html</a></li>
-<li>Rust sucks because ... <a href="https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because">https://wiki.theory.org/index.php/YourLanguageSucks#Rust_sucks_because</a></li>
-</ul>
-<a class="header" href="lecture_03.html#prepare-the-next-session-keep-talking-about-unix-tools-for-binaries-analysis" id="prepare-the-next-session-keep-talking-about-unix-tools-for-binaries-analysis"><h2>Prepare the next session (keep talking about Unix tools for binaries analysis)</h2></a>
-<ul>
-<li><a href="https://lldb.llvm.org">https://lldb.llvm.org</a></li>
-<li><a href="https://godbolt.org">https://godbolt.org</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a></li>
-<li><a href="https://en.wikipedia.org/wiki/GNU_Binutils">https://en.wikipedia.org/wiki/GNU_Binutils</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Strace">https://en.wikipedia.org/wiki/Strace</a></li>
-</ul>
-<p>We will play with =&gt; FFI: Foreign Function Interface</p>
-<p>I wish all of you enjoyed end-of-year celebrations.</p>
-<p>Best, Yvan</p>
-<p>P.S. <a href="https://xkcd.com/835/">https://xkcd.com/835/</a> &amp; <a href="https://xkcd.com/2248/">https://xkcd.com/2248/</a></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="lecture_02.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="lecture_03.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="lecture_04.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="big_project.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -194,13 +169,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="lecture_02.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="lecture_03.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="lecture_04.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="big_project.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

@@ -74,7 +74,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="lecture_01.html"><strong aria-hidden="true">1.</strong> Lecture 1</a></li><li><a href="lecture_02.html"><strong aria-hidden="true">2.</strong> Lecture 2</a></li><li><a href="lecture_03.html"><strong aria-hidden="true">3.</strong> Lecture 3</a></li><li><a href="big_project.html" class="active"><strong aria-hidden="true">4.</strong> Big Project</a></li></ol>
+            <ol class="chapter"><li><a href="lecture_01.html"><strong aria-hidden="true">1.</strong> Lecture 1</a></li><li><a href="lecture_02.html"><strong aria-hidden="true">2.</strong> Lecture 2</a></li><li><a href="lecture_03.html"><strong aria-hidden="true">3.</strong> Lecture 3</a></li><li><a href="lecture_04.html"><strong aria-hidden="true">4.</strong> Lecture 4</a></li><li><a href="big_project.html" class="active"><strong aria-hidden="true">5.</strong> Big Project</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -121,16 +121,16 @@
                 <div id="content" class="content">
                     <main>
                         <a class="header" href="big_project.html#big-project-guidelines-a-not-so-simple-ppm-image-manipulation-library" id="big-project-guidelines-a-not-so-simple-ppm-image-manipulation-library"><h1>Big project guidelines: a not so simple PPM image manipulation library</h1></a>
+<p>Goals: Manipulating IO, Memory, Concurrent programming with threads and exposing Rust function
+through Foreign Function Interface.</p>
+<p>We will use the <a href="https://en.wikipedia.org/wiki/Netpbm_format">Portable Pixel Map</a> in binary format.</p>
 <a class="header" href="big_project.html#lvl-0---warmup" id="lvl-0---warmup"><h2>Lvl 0 - Warmup</h2></a>
 <ul>
 <li>Create a new <code>ppm</code> Rust project as a library</li>
-<li>Make a <code>dummy</code> function that return <code>42</code></li>
-<li>Call this function in another language using FFI</li>
+<li>Make a little readme present your team</li>
+<li>Complete a little bit your Cargo.toml to add yourselves as author</li>
+<li>Make sure that <code>cargo build</code> is working</li>
 </ul>
-<blockquote>
-<p>The Rust doc has a really handy page on the subject:
-<a href="https://doc.rust-lang.org/1.2.0/book/rust-inside-other-languages.html">https://doc.rust-lang.org/1.2.0/book/rust-inside-other-languages.html</a></p>
-</blockquote>
 <a class="header" href="big_project.html#lvl-1---struct" id="lvl-1---struct"><h2>Lvl 1 - Struct</h2></a>
 <ul>
 <li>Create a nice custom Rust data-structure <code>Image</code> to handle 24bits images.</li>
@@ -138,7 +138,98 @@
 <blockquote>
 <p>Create first a <code>Pixel</code> structure to encode an RGB color.</p>
 </blockquote>
-<a class="header" href="big_project.html#lvl-2---unsafe" id="lvl-2---unsafe"><h2>Lvl 2 - Unsafe</h2></a>
+<p>In a PPM file pixels il take 24bits; 8 bits (octet) par color:</p>
+<ul>
+<li>8 for red</li>
+<li>8 for green</li>
+<li>8 for blue</li>
+</ul>
+<a class="header" href="big_project.html#epic-functions-for-an-epic-pixels" id="epic-functions-for-an-epic-pixels"><h3>Epic Functions for an Epic <code>Pixels</code></h3></a>
+<p>Because test are nices: Write a test for all the functions <a href="https://doc.rust-lang.org/book/ch11-01-writing-tests.html">doc</a>
+Also, write a doc in rust style <em>Prof! I don't how to write doc!</em> <a href="https://doc.rust-lang.org/rust-by-example/meta/doc.html">short awnser</a>; <a href="https://doc.rust-lang.org/1.30.0/book/2018-edition/ch14-02-publishing-to-crates-io.html?highlight=document#making-useful-documentation-comments">long answer</a>
+TL;DR writes how to use the function if it panic says it! make an example in the doc!</p>
+<p>Warmups functions:</p>
+<ul>
+<li>Write a block <code>impl Pixel</code> for next questions</li>
+<li>Write a nice constructor <code>fn new(red: u8, green: u8, blue: u8 -&gt; Pixel</code></li>
+<li>Derive <code>Clone</code> and <code>Copy</code> because a Pixel is a tiny type who fits in a register.</li>
+<li>Make functions <code>red</code>, <code>blue</code>, <code>green</code> to access each color easily</li>
+<li>Make a <code>fn display(self) -&gt; String</code> to render a pixel in terminal</li>
+<li>Carve a function <code>fn invert(&amp;self)</code> that inverts a pixel. Advise think <a href="https://doc.rust-lang.org/std/ops/trait.Not.html">bitwise</a><em>!</em> ;)</li>
+</ul>
+<p>Not so warmup:</p>
+<ul>
+<li>Make a function <code>fn eq(self, other: Pixel) -&gt; bool</code></li>
+<li>Rewrite your code of <code>eq</code> function to implement <code>PartialEq</code> <a href="https://doc.rust-lang.org/std/cmp/trait.Eq.html">Doc PartialEq</a>!</li>
+</ul>
+<p>Advice: Read the doc again! :)</p>
+<p>Need some engagement:</p>
+<ul>
+<li>Make a function <code>grayscale</code> who convert an RGB pixel to a grayscale pixel</li>
+</ul>
+<a class="header" href="big_project.html#lvl-2---image-manipulation" id="lvl-2---image-manipulation"><h2>Lvl 2 - Image manipulation</h2></a>
+<p>Write a little <code>struct Image</code> that represents a struct you might need the following fields:</p>
+<ul>
+<li><code>Vec&lt;Pixel&gt;</code> to represent the pixels buffer</li>
+<li><code>heigth</code> with type <code>usize</code></li>
+<li><code>width</code> with type <code>usize</code></li>
+<li>Maybe other fields?</li>
+</ul>
+<p>Now write some function to manipulate images!
+A function <code>fn new_with_file(filename: &amp;Path) -&gt; Image</code> that read in text mode a ppm image you might need to write
+the <code>.ppm</code> file format definition <a href="http://netpbm.sourceforge.net/doc/ppm.html">here</a>.</p>
+<p>Write in a <code>impl Image</code> a function <code>fn save(filename: &amp;Path)</code> who saves your struct into a file.</p>
+<p>An example file in text mode looks like:</p>
+<pre><code class="language-text">P3
+3 2
+255
+# The part above is the header
+# &quot;P3&quot; means this is an RGB color image in ASCII
+# &quot;3 2&quot; is the width and height of the image in pixels
+# &quot;255&quot; is the maximum value for each color
+# The part below is image data: RGB triplets
+255 0   0   # red
+0   255 0   # green
+0   0   255 # blue
+255 255 0   # yellow
+255 255 255 # white
+0   0   0   # black
+</code></pre>
+<ul>
+<li>Create an <code>invert</code> function that inverts image colors (reuse your code!)</li>
+<li>Create a <code>grayscale</code> function that makes image B&amp;W based on a filter color</li>
+</ul>
+<a class="header" href="big_project.html#buffering" id="buffering"><h3>Buffering</h3></a>
+<p>Try to with really big files, improve performances. Maybe this doc pointer can help: <a href="https://doc.rust-lang.org/std/io/trait.BufRead.html">std::io::BufRead</a></p>
+<blockquote>
+<p><a href="https://mega.nz/#!dQNSyASY!Vk6rM8ZqxpbwvSyRFzHdYVB1Rh8p_6yKTDewtUxVe6Q">Here</a>
+is a big <code>.ppm</code> the file of a Mandelbrot fractal for your tests!</p>
+<p>You may want to open the file in Rust using a buffer to do the reading of the file and
+image operations in parallel <a href="https://doc.rust-lang.org/std/io/trait.Read.html">https://doc.rust-lang.org/std/io/trait.Read.html</a></p>
+<p><code>.ppm</code> file format has a simple syntax specified here:
+<a href="http://netpbm.sourceforge.net/doc/ppm.html">http://netpbm.sourceforge.net/doc/ppm.html</a></p>
+<p>The purpose of this level is to code a custom <code>.ppm</code> reading function in Rust!</p>
+</blockquote>
+<a class="header" href="big_project.html#bonus-binary-edition" id="bonus-binary-edition"><h3>Bonus binary edition</h3></a>
+<ul>
+<li>Prepare yourself to read the pixel part in binary mode write a <code>fn new_with_file_bin(Path filename) -&gt; Image</code></li>
+</ul>
+<blockquote>
+<p>The whole purpose of this part is to do these computations using several threads,
+and to develop a strategy to find a good compromise on the number of threads to assign
+(e.g. one thread by pixel is maybe a bit too much ...)</p>
+<p>Try to calls these functions from another language!</p>
+</blockquote>
+<a class="header" href="big_project.html#lvl-3---benchmarks" id="lvl-3---benchmarks"><h2>Lvl 3 - Benchmarks</h2></a>
+<ul>
+<li>Add benchmarks tests to measure your performances</li>
+</ul>
+<blockquote>
+<p>Rust have off course a guide on this topic
+<a href="https://doc.rust-lang.org/1.2.0/book/benchmark-tests.html">https://doc.rust-lang.org/1.2.0/book/benchmark-tests.html</a></p>
+</blockquote>
+<a class="header" href="big_project.html#going-further" id="going-further"><h2>Going further</h2></a>
+<a class="header" href="big_project.html#lvl-4---unsafe---optional-c-fun-with-rust" id="lvl-4---unsafe---optional-c-fun-with-rust"><h3>Lvl 4 - Unsafe - Optional C fun with Rust</h3></a>
 <ul>
 <li>Create an <code>readPPM</code> function to read <code>.ppm</code> files</li>
 <li>Create an <code>writePPM</code> function to read <code>.ppm</code> files</li>
@@ -153,59 +244,29 @@ If you want to know about some dark magics, read <a href="https://doc.rust-lang.
 <a href="https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program">this StackOverflow post</a>
 could help!</p>
 </blockquote>
-<a class="header" href="big_project.html#lvl-3---multithreading" id="lvl-3---multithreading"><h2>Lvl 3 - Multithreading</h2></a>
+<a class="header" href="big_project.html#lvl-5---ffi-for-the-fun-and-profit" id="lvl-5---ffi-for-the-fun-and-profit"><h3>Lvl 5 - FFI for the fun and profit</h3></a>
+<p>Relatively easy:</p>
 <ul>
-<li>Create an <code>invert</code> function that inverts image colors</li>
-<li>Create a <code>grayscale</code> function that makes image B&amp;W based on a filter color</li>
+<li>Make a <code>dummy()</code> function that return <code>42</code></li>
+<li>Call this function in another language like Python using basic Foreign Function Interface FFI</li>
 </ul>
+<p><em>Note:</em></p>
 <blockquote>
-<p>The whole purpose of this part is to do these computations using several threads,
-and to develop a strategy to find a good compromise on the number of threads to assign
-(e.g. one thread by pixel is maybe a bit too much ...)</p>
-<p>Try to calls theses functions from another language!</p>
+<p>The Rust doc has a really handy page on the subject:
+<a href="https://doc.rust-lang.org/1.2.0/book/rust-inside-other-languages.html">https://doc.rust-lang.org/1.2.0/book/rust-inside-other-languages.html</a></p>
 </blockquote>
-<a class="header" href="big_project.html#lvl-4---benchmarks" id="lvl-4---benchmarks"><h2>Lvl 4 - Benchmarks</h2></a>
+<p>Somewhat harder:</p>
 <ul>
-<li>Add benchmark tests to measure your perfs</li>
+<li>Exposes functions of your <code>ppm</code> crate to Python</li>
+<li>Use <a href="https://github.com/PyO3/pyo3">PyO3</a> and <a href="https://github.com/PyO3/maturin">Maturin</a> read the README of the projects!</li>
 </ul>
-<blockquote>
-<p>Rust have off course a guide on this topic
-<a href="https://doc.rust-lang.org/1.2.0/book/benchmark-tests.html">https://doc.rust-lang.org/1.2.0/book/benchmark-tests.html</a></p>
-</blockquote>
-<a class="header" href="big_project.html#lvl-5---buffering-optionnal" id="lvl-5---buffering-optionnal"><h2>Lvl 5 - Buffering (optionnal)</h2></a>
-<ul>
-<li>Try to with really big files, improve perfs</li>
-</ul>
-<blockquote>
-<p><a href="https://mega.nz/#!dQNSyASY!Vk6rM8ZqxpbwvSyRFzHdYVB1Rh8p_6yKTDewtUxVe6Q">Here</a>
-is a big <code>.ppm</code> the file of a Mandelbrot fractal for your tests!</p>
-<p>You may want to open the file in Rust using a buffer to do the reading of the file and
-image operations in parallel <a href="https://doc.rust-lang.org/std/io/trait.Read.html">https://doc.rust-lang.org/std/io/trait.Read.html</a></p>
-<p><code>.ppm</code> file format has a simple syntax specified here:
-<a href="http://netpbm.sourceforge.net/doc/ppm.html">http://netpbm.sourceforge.net/doc/ppm.html</a></p>
-<p>The purpose of this level is to code a custom <code>.ppm</code> reading function in Rust!</p>
-</blockquote>
-<a class="header" href="big_project.html#bonuses" id="bonuses"><h2>Bonuses</h2></a>
-<ul>
-<li>What about having your fresh new lib working in the browser server-side by making a web API?</li>
-<li>What about having your stunning new lib working in the browser client-side by making it compile to WebAssembly?</li>
-<li>What about having your fancy new lib working in CLI by displaying an image using <code>ncurses</code></li>
-</ul>
-<blockquote>
-<p>For performing all that you should take a look at some nice crates in:</p>
-<ul>
-<li><a href="https://www.arewewebyet.org">https://www.arewewebyet.org</a></li>
-<li><a href="https://rustwasm.github.io/docs/wasm-pack/">https://rustwasm.github.io/docs/wasm-pack/</a></li>
-<li><a href="https://rust-lang-nursery.github.io/rust-cookbook/">https://rust-lang-nursery.github.io/rust-cookbook/</a></li>
-</ul>
-</blockquote>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="lecture_03.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="lecture_04.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
@@ -219,7 +280,7 @@ image operations in parallel <a href="https://doc.rust-lang.org/std/io/trait.Rea
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="lecture_03.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="lecture_04.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
