@@ -151,11 +151,10 @@ TL;DR writes how to use the function if it panic says it! make an example in the
 <p>Warmups functions:</p>
 <ul>
 <li>Write a block <code>impl Pixel</code> for next questions</li>
-<li>Write a nice constructor <code>fn new(red: u8, green: u8, blue: u8 -&gt; Pixel</code></li>
-<li>Derive <code>Clone</code> and <code>Copy</code> because a Pixel is a tiny type who fits in a register.</li>
-<li>Make functions <code>red</code>, <code>blue</code>, <code>green</code> to access each color easily</li>
+<li>Write a nice constructor <code>fn new(red: u8, green: u8, blue: u8 -&gt; Self</code></li>
+<li>(Optional) Derive <code>Clone</code> and <code>Copy</code> because a Pixel is a tiny type who fits in a register.</li>
 <li>Make a <code>fn display(self) -&gt; String</code> to render a pixel in terminal</li>
-<li>Carve a function <code>fn invert(&amp;self)</code> that inverts a pixel. Advise think <a href="https://doc.rust-lang.org/std/ops/trait.Not.html">bitwise</a><em>!</em> ;)</li>
+<li>Carve a function <code>fn invert(&amp;mut self)</code> that inverts a pixel. Advise think <a href="https://doc.rust-lang.org/std/ops/trait.Not.html">bitwise</a><em>!</em> ;)</li>
 </ul>
 <p>Not so warmup:</p>
 <ul>

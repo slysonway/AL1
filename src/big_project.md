@@ -33,11 +33,10 @@ TL;DR writes how to use the function if it panic says it! make an example in the
 Warmups functions:
  
 - Write a block `impl Pixel` for next questions
-- Write a nice constructor `fn new(red: u8, green: u8, blue: u8 -> Pixel`
-- Derive `Clone` and `Copy` because a Pixel is a tiny type who fits in a register.
-- Make functions `red`, `blue`, `green` to access each color easily
+- Write a nice constructor `fn new(red: u8, green: u8, blue: u8 -> Self`
+- (Optional) Derive `Clone` and `Copy` because a Pixel is a tiny type who fits in a register.
 - Make a `fn display(self) -> String` to render a pixel in terminal
-- Carve a function `fn invert(&self)` that inverts a pixel. Advise think [bitwise](https://doc.rust-lang.org/std/ops/trait.Not.html)*!* ;)
+- Carve a function `fn invert(&mut self)` that inverts a pixel. Advise think [bitwise](https://doc.rust-lang.org/std/ops/trait.Not.html)*!* ;)
  
 Not so warmup:
  
@@ -153,4 +152,3 @@ Somewhat harder:
  
 - Exposes functions of your `ppm` crate to Python
 - Use [PyO3](https://github.com/PyO3/pyo3) and [Maturin](https://github.com/PyO3/maturin) read the README of the projects!
- 
